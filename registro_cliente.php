@@ -26,7 +26,7 @@
                     $edad = $_POST['edad'];
                     $direccion = $_POST['direccion'];
                     $telefono = $_POST['telefono'];
-                    $enfemedad = $_POST['enfermeda'];
+                    $enfemedad = $_POST['enfermedad'];
                     $dui=$_POST['dui'];
                     $query = $conn->prepare("SELECT * FROM tbl_paciente WHERE dui=:dui");
                     $query->bindParam("dui", $dui, PDO::PARAM_STR);

@@ -20,7 +20,7 @@ $crud = new crudcliente($conn);
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <?php require_once"menu.php" ?>
-    <title>LISTA CLIENTES</title>
+    <title>LISTA PACIENTES</title>
 </head>
 
 <body>
@@ -32,12 +32,15 @@ $crud = new crudcliente($conn);
              <tr>
                  <th>Id</th>
                  <th>Nombre</th>
+                 <th>Apellidos</th>
+                 <th>Edad</th>
                  <th>Direccion</th>
                  <th>Telefono</th>
+                 <th>Enfermadad que parece</th>
                  <th>Dui</th>
              </tr>
              <?php
-                $query = "SELECT * FROM tbl_cliente";
+                $query = "SELECT * FROM tbl_paciente";
                 $crud->datacliente($query)
                 ?>
                 
