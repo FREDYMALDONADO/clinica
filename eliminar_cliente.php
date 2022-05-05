@@ -1,15 +1,12 @@
 <?php
-session_start();
-include('config.php');
+include_once 'config.php';
 include_once 'class/cliente.php';
-if(isset($_GET['delete_id'])){
+$crud = new crudcliente($conn);
+if (isset($_POST['btn-del'])) {
     $id = $_GET['delete_id'];
-    $crud = new crudcliente($conn);
-   /**  header("Location:eliminar_users");*/
-
-
+    $crud->delete($id);
+    header("Location:eliminar_cliente.php?alerta");
 }
-echo $id;
 ?>
 <!doctype html>
 <html lang="en">
@@ -28,6 +25,22 @@ echo $id;
 <body style="background-color:#7F8C8D">
 
   <div class="container"><br>
+
+  <?php
+        if (isset($_GET['alerta'])) {
+        ?>
+            <div class="alert alert-success">
+                <strong>Hecho!</strong> Usuario Eliminado Correcctamente!
+            </div>
+        <?php
+        } else {
+        ?>
+            <div class="alert alert-danger">
+                <strong>Alerta!</strong> Esta Seguro que requiere Eliminar el Ususario
+            </div>
+        <?php
+        }
+        ?>
   <?php
   if(isset($_GET['delete_id'])){
       
@@ -100,12 +113,12 @@ echo $id;
         <form method="post">
         <input type="hidden" name="id" value="<?php echo $row['id']; ?>" />
             <button class="btn btn-large btn-primary" type="submit" name="btn-del"><i class="glyphicon glyphicon-trash"></i> &nbsp; YES</button>
-            <a href="admin_users.php" class="btn btn-large btn-success"><i class="glyphicon glyphicon-backward"></i> &nbsp; NO</a>
+            <a href="admi_cliente.php" class="btn btn-large btn-success"><i class="glyphicon glyphicon-backward"></i> &nbsp; NO</a>
         </form>
     <?php
             } else {
     ?>
-        <a href="admin_users.php" class="btn btn-large btn-success"><i class="glyphicon glyphicon-backward"></i>REGRESAR</a>
+        <a href="admi_cliente.php" class="btn btn-large btn-success"><i class="glyphicon glyphicon-backward"></i>REGRESAR</a>
     <?php
             }
     ?>
